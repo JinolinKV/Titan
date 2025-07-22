@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+}
+
+.scroll{
+  background-color: black; 
+  color: white; 
+  padding: 10px;
+  
+  font-size: 14px;
+}
+
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  border-bottom: 2px solid #f5f1f1;
+  background: #fff;
+}
+
+.logo img {
+  height: 22px;
+}
+
+
+.search-bar {
+  position: relative;
+  width: 600px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 40px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+}
+
+.mic-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+}
+
+
+.icon-group {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.icon-group a {
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-group a img {
+  height: 24px;
+  margin-bottom: 3px;
+}
+
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 12px 0;
+
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+
+.pincode-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #fff9f2;
+  padding: 12px;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.pincode-banner img {
+  height: 16px;
+}
+
+
+.slider {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  overflow: hidden;
+}
+
+#slider-img {
+  width: 100%;     
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.padding{
+   
+    padding: 30px 100%;
+}
+
+.bottom-slider{
+
+  width:70%; height: 20px; padding-bottom: 10px;
+}
+
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-box {
+  position: absolute;
+  top:110%;
+  left: 50%;            
+  transform: translateX(-50%);
+  background-color: #e8cbcb;
+  color: #0d0d0d;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.tooltip-wrapper:hover .tooltip-box {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+        
