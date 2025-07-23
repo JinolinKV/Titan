@@ -1,1 +1,0 @@
-!function(){"use strict";$(document).ready(function(){$(".display-style").css("display","none");var o=$(".show-details"),n=$(".arrow-down"),i=$(".arrow-up");n.on("click",function(){o.show(),n.hide(),i.show()}),i.on("click",function(){o.hide(),n.show(),i.hide()})})}();
