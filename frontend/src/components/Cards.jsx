@@ -21,6 +21,10 @@ const Cards = ({ id, image, title, description, price }) => {
     addToCart({ id, image, title, description, price });
   };
 
+  const addToCartMsg=()=>{
+    alert("Product added to Cart")
+  }
+
   const handleLikeToggle = () => {
     setLiked(!liked);
     if (!liked) {
@@ -42,7 +46,7 @@ const Cards = ({ id, image, title, description, price }) => {
         </h5>
         <p className="card-text">{description}</p>
         <h6 className="card-text">₹{price}</h6>
-        <button className="btn btn-primary me-2" onClick={handleAddToCart}>
+        <button className="btn btn-primary me-2" onClick={()=>{handleAddToCart(); addToCartMsg()}}>
           Add to Cart
         </button>
         <button className="btn btn-success me-2" onClick={CheckOut}>

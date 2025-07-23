@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useCart } from "../context/CartContext";
+import Logo from "../components/Logo";
+import HeaderRole from "../components/HeaderRole";
 
-const PlaceOrder = ({ onPlaceOrder }) => {
+const PlaceOrder = () => {
+  const { cartItems, setCart } = useCart(); // Access cart and clearCart method
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -10,7 +14,7 @@ const PlaceOrder = ({ onPlaceOrder }) => {
   });
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -18,14 +22,25 @@ const PlaceOrder = ({ onPlaceOrder }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (onPlaceOrder) {
-      onPlaceOrder(formData); 
+
+   
+    if (cartItems.length === 0) {
+      alert("Your cart is empty. Add items before placing an order.");
+      return;
     }
+
+    
+    console.log("Order Placed:", formData);
+
+    
+    setCart([]);
+
     alert("Order placed successfully!");
-    console.log("Order Address:", formData);
   };
 
   return (
+    <div>
+      <Logo/>
     <div className="container mt-4">
       <h3 className="text-center">Enter Delivery Address</h3>
 
@@ -60,6 +75,7 @@ const PlaceOrder = ({ onPlaceOrder }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -50,6 +50,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         incrementQuantity,
         decrementQuantity,
+        setCart: setCartItems,
       }}
     >
       {children}

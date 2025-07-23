@@ -27,7 +27,13 @@ body {
 }
 
 .logo img {
-  height: 22px;
+  height: 25px;
+}
+
+.homelogo img{
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 

@@ -6,33 +6,33 @@ import Navbar from '../components/Navbar'
 
 const Products=[
   {
-    id:'i1',
-    image:"./images/i1.webp",
+    id:'i4',
+    image:"./images/i4.webp",
     title:"Police",
     description:"Move Smart with smart watch",
-    price:1999
+    price:13000
 
   },
   {
-     id:'i2',
-    image:"./images/i3.jpg",
-    title:"Titan",
+     id:'i6',
+    image:"./images/i6.webp",
+    title:"Police",
     description:"Move Smart with smart watch",
-    price:1999
+    price:19990
   },
    {
-     id:'i4',
-    image:"./images/i4.webp",
+     id:'i1',
+    image:"./images/i1.webp",
     title:"Kenneth Cole",
     description:" Automatic Grey Dial Brown Colour Leather Strap Watch For Men",
-    price:1999
+    price:5799
    },
    {
-    id:'i6',
-    image:"./images/i6.webp",
+    id:'i3',
+    image:"./images/i3.jpg",
     title:"Anne Klein",
     description:"Anne Klein Quartz Analog Purple Dial Plastic Strap Watch for Women",
-    price:1999
+    price:8499
    }
    
 ]
