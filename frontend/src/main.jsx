@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <WishlistProvider>  
       <CartProvider>
-        <BrowserRouter basename="/Titan">
+        <BrowserRouter>
           <App />
         </BrowserRouter>
       </CartProvider>
