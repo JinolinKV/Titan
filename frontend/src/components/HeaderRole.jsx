@@ -11,20 +11,20 @@ const HeaderRole = () => {
     <div>
       <header className="top-header">
         <div className="logo">
-          <img src="/images/titan-logo.svg" alt="Titan Logo" />
+          <img src="./images/titan-logo.svg" alt="Titan Logo" />
         </div>
 
         <div className="search-bar">
-          <img src="/images/search.svg" className="search-icon" alt="Search" />
+          <img src="./images/search.svg" className="search-icon" alt="Search" />
           <input type="text" placeholder="Search titan edge" />
-          <img src="/images/mic-icon.svg" className="mic-icon" alt="Mic" />
+          <img src="./images/mic-icon.svg" className="mic-icon" alt="Mic" />
         </div>
 
         <div className="icon-group">
           
           <div className="tooltip-wrapper">
             <Link to="/Login">
-              <img src="/images/headerAccount.svg" alt="Account" />
+              <img src="./images/headerAccount.svg" alt="Account" />
               <span>Account</span>
             </Link>
             <div className="tooltip-box">
@@ -49,13 +49,13 @@ const HeaderRole = () => {
 
           
           <Link to="/wishlist">
-            <img src="/images/headerWishlist.webp" alt="Wishlist" />
+            <img src="./images/headerWishlist.webp" alt="Wishlist" />
             <span>Wishlist</span>
           </Link>
 
           
           <Link to="/Cart" className="position-relative">
-            <img src="/images/headerCart.svg" alt="Cart" />
+            <img src="./images/headerCart.svg" alt="Cart" />
             <span>Cart</span>
             {totalItems > 0 && (
               <span
@@ -69,7 +69,7 @@ const HeaderRole = () => {
 
           
           <Link to="/track-order">
-            <img src="/images/icon-track-order-desktop.svg" alt="Track Order" />
+            <img src="./images/icon-track-order-desktop.svg" alt="Track Order" />
             <span>Track Order</span>
           </Link>
         </div>

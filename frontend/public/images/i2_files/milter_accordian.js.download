@@ -1,1 +1,0 @@
-!function(){"use strict";$(".milter-icon").on("click",function(t){var s=$(t.currentTarget);"1"===$(this).attr("clicked")?(s.find("img").css("transform","scaleY(1)"),$(this).attr("clicked","0"),$(".product-story-toggle-section").removeClass("show")):(s.find("img").css("transform","scaleY(-1)"),$(this).attr("clicked","1"),$(".product-story-toggle-section").addClass("show"))})}();

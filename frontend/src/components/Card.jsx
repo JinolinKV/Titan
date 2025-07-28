@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../pages/home.css';
+
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -14,7 +14,7 @@ export class Card extends Component {
             <div className="card border-0 shadow-none">
               <Link to="/men">
                 <img
-                  src="/images/TrendingFinal_Men_D.webp"
+                  src="./images/TrendingFinal_Men_D.webp"
                   className="img-fluid"
                   alt="Trending for Men"
                 />
@@ -27,7 +27,7 @@ export class Card extends Component {
             <div className="card border-0 shadow-none">
               <Link to="/women">
                 <img
-                  src="/images/TrendingFinal_Women_D.webp"
+                  src="./images/TrendingFinal_Women_D.webp"
                   className="img-fluid"
                   alt="Trending for Women"
                 />

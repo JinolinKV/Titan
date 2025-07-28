@@ -4,20 +4,16 @@ import { Link } from 'react-router-dom';
 export class Logo extends Component {
   render() {
     return (
-      
-        
-          <div >
-          <div ClassName='logo'>
-          <img src="/images/titan-logo.svg" alt="Titan Logo" />  
-          </div>
-          <div className='homelogo'>
-            
-            <Link to="/">
-              <img src="/images/home (1).png" alt="Titan Logo" />
-            </Link>
-          </div>
-          </div>
-       
+      <div className="d-flex align-items-center gap-3 p-2"> {/* Bootstrap Flex Row */}
+        <div className='logo'>
+          <img src="./images/titan-logo.svg" alt="Titan Logo" height="50" />  
+        </div>
+        <div className='homelogo'>
+          <Link to="/">
+            <img src="./images/home (1).png" alt="Home Icon" height="40" />
+          </Link>
+        </div>
+      </div>
     );
   }
 }
