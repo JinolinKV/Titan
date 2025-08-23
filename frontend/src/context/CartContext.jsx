@@ -1,58 +1,70 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 const CartContext = createContext();
+const BASE_URL = 'http://localhost:5000/api/cart';
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {
-    setCartItems((prevItems) => {
-      const existing = prevItems.find((item) => item.id === product.id);
-      if (existing) {
-        return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevItems, { ...product, quantity: 1 }];
-      }
-    });
+  const getUserId = () => localStorage.getItem('userId');
+
+  useEffect(() => {
+    const userId = getUserId();
+    if (!userId) return;
+
+    axios.get(`${BASE_URL}/${userId}`)
+      .then(res => setCartItems(res.data))
+      .catch(err => console.error("Cart Fetch Error:", err.response?.data || err.message));
+  }, []);
+
+  const addToCart = async (item) => {
+  const userId = getUserId();
+  if (!userId) {
+    console.error("User ID not found in localStorage");
+    return;
+  }
+
+  // Support various field names
+  const productId = item._id || item.id || item.productId;
+  const { title, description, price, image } = item;
+
+  // Validate required fields
+  if (!productId || !title || !price) {
+    console.error("Missing required fields in item:", item);
+    return;
+  }
+
+  const newItem = {
+    userId,
+    productId,
+    title,
+    description,
+    price,
+    image,
   };
 
-  const removeFromCart = (id) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  };
+  console.log("Sending to Cart API:", newItem);
 
-  const incrementQuantity = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
+  try {
+    const res = await axios.post(BASE_URL, newItem);
+    setCartItems(prev => [...prev, res.data]);
+  } catch (err) {
+    console.error("Add to Cart Error:", err.response?.data || err.message);
+  }
+};
 
-  const decrementQuantity = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems
-        .map((item) =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
+  const removeFromCart = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/${id}`);
+      setCartItems(prev => prev.filter(item => item._id !== id));
+    } catch (err) {
+      console.error("Remove from Cart Error:", err.response?.data || err.message);
+    }
   };
 
   return (
-    <CartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        incrementQuantity,
-        decrementQuantity,
-        setCart: setCartItems,
-      }}
-    >
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

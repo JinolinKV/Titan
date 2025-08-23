@@ -14,6 +14,7 @@ import PlaceOrder from './pages/PlaceOrder';
 import Premium from './pages/Premium';
 import Watches from './pages/Watches';
 import Service from './pages/Service';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/premium" element={<Premium />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/international" element={<International />} />
       <Route path="/watches" element={<Watches />} />
       <Route path="/placeorder" element={<PlaceOrder />} /> 

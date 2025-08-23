@@ -5,30 +5,30 @@ import Marquee from '../components/Marquee';
 import HeaderRole from '../components/HeaderRole';
 import Navbar from '../components/Navbar';
 
-const products = [
+const Products = [
   {
-    id: 'w1',
+    productId: 'w1',
     image: './images/2606WM08_1.webp',
     title: 'Titan',
     description: "Women's Watch | Titan Multifunction Karishma",
     price: 3000
   },
   {
-    id: 'w2',
+    productId: 'w2',
     image: './images/1805QM04_1.webp',
     title: 'Titan',
     description: "Women's Watch | Titan Multifunction Karishma",
     price: 4500
   },
   {
-    id: 'w3',
+    productId: 'w3',
     image: './images/68035KL01_1.webp',
     title: 'Titan',
     description: "Women's Watch | Titan Men's Elegance",
     price: 1999
   },
   {
-    id: 'w4',
+    productId: 'w4',
     image: './images/2656WM01_1.webp',
     title: 'Titan',
     description: "Women's Watch | Titan Minimal Quartz",
@@ -43,16 +43,17 @@ const women = () => {
       <HeaderRole />
       <Navbar/>
       <div className="d-flex flex-wrap justify-content-center my-4">
-        {products.map((product) => (
-          <Cards
-            key={product.id}
-            id={product.id}  
-            image={product.image}
-            title={product.title}
-            description={product.description}
-            price={product.price}
-          />
-        ))}
+        {Products.map((item) => (
+  <Cards
+    key={item.id || item.productId}
+    productId={item.id || item.productId}
+    image={item.image}
+    title={item.title}
+    description={item.description}
+    price={item.price}
+  />
+))}
+
       </div>
     </div>
   );

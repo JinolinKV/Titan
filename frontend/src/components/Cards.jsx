@@ -1,36 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart} from "../context/CartContext";
+import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Cards = ({ id, image, title, description, price }) => {
+const Cards = ({ productId, image, title, description, price }) => {
   const { addToCart } = useCart();
   const { addToWishlist } = useWishlist();
   const [liked, setLiked] = useState(false);
-  const navigate=useNavigate();
-  const CheckOut = () => {
-    navigate("/PlaceOrder"); 
-  };
-
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
-    addToCart({ id, image, title, description, price });
-  };
+  addToCart({ productId, image, title, description, price }); // ✅ use productId
+  alert("Product added to Cart");
+};
 
-  const addToCartMsg=()=>{
-    alert("Product added to Cart")
+const handleLikeToggle = () => {
+  setLiked(!liked);
+  if (!liked) {
+    addToWishlist({ productId, image, title, description, price }); // ✅ use productId
   }
+};
 
-  const handleLikeToggle = () => {
-    setLiked(!liked);
-    if (!liked) {
-      addToWishlist({ id, image, title, description, price });
-    }
-  };
+const handleBuyNow = () => {
+  addToCart({ productId, image, title, description, price }); // ✅ use productId
+  navigate("/PlaceOrder");
+};
+
 
   return (
     <div className="card m-2" style={{ width: '18rem' }}>
@@ -46,13 +45,12 @@ const Cards = ({ id, image, title, description, price }) => {
         </h5>
         <p className="card-text">{description}</p>
         <h6 className="card-text">₹{price}</h6>
-        <button className="btn btn-primary me-2" onClick={()=>{handleAddToCart(); addToCartMsg()}}>
+        <button className="btn btn-primary me-2" onClick={handleAddToCart}>
           Add to Cart
         </button>
-        <button className="btn btn-success me-2" onClick={CheckOut}>
+        <button className="btn btn-success" onClick={handleBuyNow}>
           Buy Now
         </button>
-
       </div>
     </div>
   );

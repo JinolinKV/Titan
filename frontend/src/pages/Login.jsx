@@ -11,20 +11,46 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!email || !password) {
-      alert('Please enter both email and password');
+      alert("Please enter both email and password");
       return;
     }
-    alert('Login successful!');
-    navigate('/home');
+
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // ✅ Store userId and optionally token
+        localStorage.setItem('userId', data.user._id);
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+
+        alert("Login successful!");
+        navigate('/');
+      } else {
+        alert(data.message || "Invalid email or password");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
     <div>
       <Logo />
-      
       <div className="container mt-5 text-center">
         <h2>Log In</h2>
         <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center gap-3 mt-3">
@@ -44,7 +70,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button onClick={'/Home'}type="submit" className="btn btn-primary w-25">
+          <button type="submit" className="btn btn-primary w-25">
             Log In
           </button>
         </form>
